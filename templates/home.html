@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+
+{% block body %}
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <form class="d-flex" method="POST">
+    {% csrf_token %}
+      <input class="form-control me-2" name='search_loc' type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class='col-md-6'>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-sm-12 col-xs-12">
+            <div class="card text-white">
+                <div class="div1 p-4 p-md-5 ">
+                    <h5>{{result.city}} <img src="http://openweathermap.org/img/w/{{result.icon}}.png" alt=""></h5>
+                    <h1>{{result.weather}}<sup>°C </sup> </h1>
+                    <p class="my-0">  </p>
+                    <h4 class="my-0"> {{result.desc}} </h4>
+                </div>
+                <div class="div2"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock body %}
