@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import requests
+import random
 # Create your views here.
 
 def index(request):
     if request.method == "POST":
         city = request.POST.get('search_loc')
     else:
-        city = "dehradun"
+        random_cities = ["Hong Kong", "Bangkok", "London","Singapore","Macau","Paris","Dubai","Kuala Lumpur","Istanbul","Rome","Delhi","Mumbai","California"]
+        city=random.choice(random_cities)
 
 
     api='http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=76820f87246d426cfef2c751d89cecb5'
