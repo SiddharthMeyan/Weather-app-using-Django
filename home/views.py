@@ -21,9 +21,12 @@ def index(request):
         'desc': api_json['weather'][0]['main'],
         'icon': api_json['weather'][0]['icon'],
     }
-    if result['weather'] >20:
+    if result['weather'] >10:
         a=1
     else:
         a=2
+    
+    
+    print(api_json)
     context = {'result':result,'a':a}
     return render(request,'home.html', context)
