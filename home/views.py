@@ -7,6 +7,7 @@ import random
 def index(request):
     if request.method == "POST":
         city = request.POST.get('search_loc')
+        
     else:
         random_cities = ["Hong Kong", "Bangkok", "London","Singapore","Macau","Paris","Dubai","Kuala Lumpur","Istanbul","Rome","Delhi","Mumbai","California"]
         city=random.choice(random_cities)
@@ -20,5 +21,9 @@ def index(request):
         'desc': api_json['weather'][0]['main'],
         'icon': api_json['weather'][0]['icon'],
     }
-    context = {'result':result}
+    if result['weather'] >20:
+        a=1
+    else:
+        a=2
+    context = {'result':result,'a':a}
     return render(request,'home.html', context)
